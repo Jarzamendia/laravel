@@ -1,0 +1,3 @@
+#!/usr/bin/with-contenv sh
+
+php-fpm8 -c /etc/php8/php-fpm.ini --fpm-config "/etc/php8/php-fpm.conf" --pid /var/run/php-fpm.pid
