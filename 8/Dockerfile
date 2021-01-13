@@ -2,7 +2,7 @@ FROM alpine:3.12
   
 # Instalando o S6
 ENV S6_OVERLAY_VERSION "2.1.0.2"
-ENV PHP_VERSION=8.0.0-r0
+ENV PHP_VERSION=8.0.1-r0
 ENV APCU_VERSION=5.1.19-r0
 ENV PHP_REDIS_VERSION=5.3.2-r0
 ENV MAX_PHP_PROCESS=50
@@ -20,40 +20,40 @@ RUN cd /tmp && \
 	rm s6-overlay-amd64.tar.gz;
 
 # Instalando o PHP-FPM e componentes
-RUN echo "@testing http://nl.alpinelinux.org/alpine/edge/testing" >> /etc/apk/repositories && \ 
+RUN echo "@community http://nl.alpinelinux.org/alpine/edge/community" >> /etc/apk/repositories && \ 
 	apk update && \
 	apk add --no-cache \
-	php8@testing=$PHP_VERSION \
-	php8-common@testing=$PHP_VERSION \
- 	php8-fpm@testing=$PHP_VERSION \
- 	php8-xml@testing=$PHP_VERSION \
- 	php8-pdo@testing=$PHP_VERSION \
- 	php8-phar@testing=$PHP_VERSION \
- 	php8-openssl@testing=$PHP_VERSION \
- 	php8-pdo_mysql@testing=$PHP_VERSION \
- 	php8-mysqli@testing=$PHP_VERSION \
- 	php8-gd@testing=$PHP_VERSION \
- 	php8-curl@testing=$PHP_VERSION \
- 	php8-opcache@testing=$PHP_VERSION \
- 	php8-ctype@testing=$PHP_VERSION \
- 	php8-intl@testing=$PHP_VERSION \
- 	php8-bcmath@testing=$PHP_VERSION \
- 	php8-dom@testing=$PHP_VERSION \
- 	php8-xmlreader@testing=$PHP_VERSION \
- 	php8-pear@testing=$PHP_VERSION \
- 	php8-mysqlnd@testing=$PHP_VERSION \
- 	php8-pecl-apcu@testing=$APCU_VERSION \
- 	php8-mbstring@testing=$PHP_VERSION \
- 	php8-fileinfo@testing=$PHP_VERSION \
- 	php8-session@testing=$PHP_VERSION \
- 	php8-ldap@testing=$PHP_VERSION \
- 	php8-iconv@testing=$PHP_VERSION \
- 	php8-zip@testing=$PHP_VERSION \
-	php8-pgsql@testing=$PHP_VERSION \
-	php8-pdo_sqlite@testing=$PHP_VERSION \
-	php8-pdo_pgsql@testing=$PHP_VERSION \
-	php8-pecl-redis@testing=$PHP_REDIS_VERSION \
-	php8-tokenizer@testing=$PHP_VERSION && \
+	php8@community=$PHP_VERSION \
+	php8-common@community=$PHP_VERSION \
+ 	php8-fpm@community=$PHP_VERSION \
+ 	php8-xml@community=$PHP_VERSION \
+ 	php8-pdo@community=$PHP_VERSION \
+ 	php8-phar@community=$PHP_VERSION \
+ 	php8-openssl@community=$PHP_VERSION \
+ 	php8-pdo_mysql@community=$PHP_VERSION \
+ 	php8-mysqli@community=$PHP_VERSION \
+ 	php8-gd@community=$PHP_VERSION \
+ 	php8-curl@community=$PHP_VERSION \
+ 	php8-opcache@community=$PHP_VERSION \
+ 	php8-ctype@community=$PHP_VERSION \
+ 	php8-intl@community=$PHP_VERSION \
+ 	php8-bcmath@community=$PHP_VERSION \
+ 	php8-dom@community=$PHP_VERSION \
+ 	php8-xmlreader@community=$PHP_VERSION \
+ 	php8-pear@community=$PHP_VERSION \
+ 	php8-mysqlnd@community=$PHP_VERSION \
+ 	php8-pecl-apcu@community=$APCU_VERSION \
+ 	php8-mbstring@community=$PHP_VERSION \
+ 	php8-fileinfo@community=$PHP_VERSION \
+ 	php8-session@community=$PHP_VERSION \
+ 	php8-ldap@community=$PHP_VERSION \
+ 	php8-iconv@community=$PHP_VERSION \
+ 	php8-zip@community=$PHP_VERSION \
+	php8-pgsql@community=$PHP_VERSION \
+	php8-pdo_sqlite@community=$PHP_VERSION \
+	php8-pdo_pgsql@community=$PHP_VERSION \
+	php8-pecl-redis@community=$PHP_REDIS_VERSION \
+	php8-tokenizer@community=$PHP_VERSION && \
     ln -sf /dev/stdout /var/log/php-fpm-access.log && \
 	ln -sf /dev/stderr /var/log/php-fpm.log && \
 	ln -sf /dev/stdout /var/log/nginx/access.log && \
